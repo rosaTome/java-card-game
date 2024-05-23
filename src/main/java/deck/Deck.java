@@ -75,19 +75,39 @@ public class Deck {
         deckOfCards.clear();
         initialiseDeck();
     }
+    
+    //method to print each card in the deck
+    public void printDeck() {
+        for (Card card : deckOfCards) {
+            System.out.println(card);
+        }
+    }
 
     //    Main method for testing
     public static void main (String[] args) {
 //        Create a new deck
         Deck deck = new Deck();
 
-////        Deal and print 1 card
+
+//////        Deal and print 1 card
 //        System.out.println("dealCards - dealing 1 card:");
 //        Card dealtCard = deck.dealCard();
 //        if (dealtCard != null) {
 //            System.out.println("Dealt Card: " + dealtCard);
 //        } else {
 //            System.out.println("No card was dealt.");
+//        }
+//        System.out.println("Remaining deck size: " + deck.deckOfCards.size());
+
+        ////        Deal and print 5 cards
+//        System.out.println("dealCards - dealing 5 cards:");
+//        for (int i = 0; i < 5; i++) {
+//            Card dealtCard = deck.dealCard();
+//            if (dealtCard != null) {
+//                System.out.println("Dealt Card " + (i + 1) + ": " + dealtCard);
+//            } else {
+//                System.out.println("No card was dealt.");
+//            }
 //        }
 //        System.out.println("Remaining deck size: " + deck.deckOfCards.size());
 //
@@ -114,19 +134,24 @@ public class Deck {
 //            System.out.println(card);
 //        }
 
-//      shuffle card
-//        deck.shuffleDeck();
+//       Shuffle cards
+//       deck.shuffleDeck();
 //        System.out.println("Shuffled deck:");
 //        for (Card card : deck.deckOfCards) {
 //            System.out.println(card);
 //        }
 
 //      Reset cards
-        deck.resetDeck();
-        System.out.println("Reset deck:");
-        for (Card card : deck.deckOfCards) {
-            System.out.println(card);
-        }
+//        deck.resetDeck();
+//        System.out.println("Reset deck:");
+//        for (Card card : deck.deckOfCards) {
+//            System.out.println(card);
+//        }
+//        System.out.println("Remaining deck size post reset cards method: " + deck.deckOfCards.size());
+
+//        Print each card in the deck
+        System.out.println("Printed deck of cards:");
+        deck.printDeck();
     }
 
 
