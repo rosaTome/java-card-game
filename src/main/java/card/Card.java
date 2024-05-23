@@ -9,8 +9,8 @@ public class Card {
 
 //    Arrays for suits, symbols and values
     public static final String[] SUITS = {"\u2665", "\u2663", "\u2666", "\u2660"};
-    public static final String[] SYMBOLS = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
-    public static final int[] INT_VALUES = { 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13, 14 };
+    public static final String[] SYMBOLS = {"A","2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+    public static final int[] INT_VALUES = { 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10, 11, 12, 13 };
 
     // Constructor
     public Card (String suit, String symbol, int value) {

@@ -21,7 +21,7 @@ public class UserCreation {
 
     public static void main(String[] args) {
         UserCreation userCreation = new UserCreation();
-        userCreation.createUser();;
+        userCreation.createUser();
         System.out.println("Stored user name: " + userCreation.getUserName());
     }
 }
