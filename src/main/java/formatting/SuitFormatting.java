@@ -11,19 +11,35 @@ public class SuitFormatting {
         Scanner scanner = new Scanner(System.in);
 
 //    Display available suits
-
         System.out.println("Select a suit: ");
+        String [] SUITS_INITIALS = {"H", "C", "D","S"};
         for (int i = 0; i < Card.SUITS.length; i++) {
-            System.out.println((i + 1) + ":" + Card.SUITS[i]);
+            System.out.println((SUITS_INITIALS[i]) + ":" + Card.SUITS[i]);
         }
 
 //        Get suit choice from user
-        int suitChoice = -1;
-        while (suitChoice < 1 || suitChoice > Card.SUITS.length) {
-            System.out.println("Enter your suit choice:");
-            suitChoice = scanner.nextInt();
+        String chosenSuit = null;
+        while (chosenSuit == null) {
+            System.out.println("Enter your suit choice: ");
+            String suitInput = scanner.next().toUpperCase();
+            switch (suitInput) {
+                case "H":
+                    chosenSuit = Card.SUITS[0];
+                    break;
+                case "C":
+                    chosenSuit = Card.SUITS[1];
+                    break;
+                case "D":
+                    chosenSuit = Card.SUITS[2];
+                    break;
+                case "S":
+                    chosenSuit = Card.SUITS[3];
+                    break;
+                default:
+                    System.out.println("Invalid suit choice. Please try again.");
+                    
+            }
         }
-        String chosenSuit = Card.SUITS[suitChoice - 1];
 
         //    Display available values
         System.out.println("Select a value: ");
@@ -47,7 +63,6 @@ public class SuitFormatting {
         return selectedCard;
 
     }
-
 
 ////    Get suit choice from user
 //public String getCardChoice() {
