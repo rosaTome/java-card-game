@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class SuitFormatting {
 
-    public Card selectCard() {
+    public void selectCard() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -60,25 +60,13 @@ public class SuitFormatting {
         //    Create and return selected card
         Card selectedCard = new Card (chosenSuit, chosenSymbol, chosenValue);
         System.out.println("You have selected the following card: " + selectedCard);
-        return selectedCard;
-
     }
 
-////    Get suit choice from user
-//public String getCardChoice() {
-//            System.out.println("Enter the chosen card");
-//            String input = scanner.nextLine();
-//            return input.toLowerCase();
-//        }
-
-
+// Testing
         public static void main (String[]args){
             System.out.println("choose from the following suits:");
             SuitFormatting suitFormatting = new SuitFormatting();
             suitFormatting.selectCard();
-//       for (Card card : deck.deckOfCards) {
-//       System.out.println(card)
-
         }
 
 
