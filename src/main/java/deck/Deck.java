@@ -83,6 +83,10 @@ public class Deck {
         }
     }
 
+    public int size() {
+        return deckOfCards.size();
+    }
+
     //    Main method for testing
     public static void main (String[] args) {
 //        Create a new deck
@@ -154,7 +158,6 @@ public class Deck {
         deck.printDeck();
     }
 
-    public boolean isEmpty() {
-        return deckOfCards.isEmpty();
-    }
+
+
 }
