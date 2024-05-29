@@ -9,7 +9,7 @@ import card.CardSorting;
 
 public class Deck {
     int[] numberCards = new int[52];
-    private final List<Card> deckOfCards;
+    public final List<Card> deckOfCards;
 
     // Constructor to initialise deck with 52 cards
     public Deck() {
@@ -81,6 +81,10 @@ public class Deck {
         for (Card card : deckOfCards) {
             System.out.println(card);
         }
+    }
+    // Getter method for deckOfCards
+    public List<Card> getDeckOfCards() {
+        return deckOfCards;
     }
 
     //    Main method for testing
