@@ -9,36 +9,66 @@ import java.util.List;
 public class SnapGame {
 
     private Deck deck;
-    private List<Card> pile;
+    private List<Card> dealtPile;
+    private List<Card> snapPile;
+    private Card previousCard;
 
-//    Constructor to initialise game
+    //    Constructor to initialise game
     public SnapGame() {
         deck = new Deck();
-        pile = new ArrayList<>();
+        deck.shuffleDeck();
+        dealtPile = new ArrayList<>();
+        snapPile = new ArrayList<>();
+        previousCard = null;
     }
 
 // deal card from the deck
     public Card dealCard() {
         Card card = deck.dealCard();
         if (card != null) {
-            pile.add(card);
+            dealtPile.add(card);
         }
         return card;
     }
 
 //    check if there is a snap
-    public boolean isSnap() {
-        if (pile.size() < 2) {
+    public boolean playRound() {
+        if (isGameOver()) {
+            System.out.println("No cards left in the deck. Game over!");
             return false; // f
         }
-        Card topCard = pile.get(pile.size() - 1);
-        Card secondCard = pile.get(pile.size() - 2);
-        return topCard.getSymbol().equals(secondCard.getSymbol());
-    }
 
-//    check if the game is over (deck is empty
+        Card currentCard = deck.dealCard();
+        if (currentCard == null) {
+            return false;
+        }
+        System.out.println("Current card: " + currentCard);
+        snapPile.add(currentCard);
+
+        if (previousCard != null) {
+            dealtPile.add(previousCard);
+        }
+            previousCard = currentCard;
+            return true;
+        }
+
+    public boolean isSnap() {
+        if (previousCard == null || snapPile.size() < 2) {
+            return false;
+        }
+        Card lastCard = snapPile.get(snapPile.size() - 1);
+        Card secondLastCard = snapPile.get(snapPile.size() - 2);
+        return lastCard.getSymbol().equals(secondLastCard.getSymbol());    }
+
     public boolean isGameOver() {
-        return deck.isEmpty();
+        return deck.dealCard() == null;
     }
 
+    public List<Card> getDealtPile() {
+        return dealtPile;
+    }
+
+    public List<Card> getSnapPile() {
+        return snapPile;
+    }
 }
