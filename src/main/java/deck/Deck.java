@@ -154,8 +154,7 @@ public class Deck {
         deck.printDeck();
     }
 
-
-
-
-
+    public boolean isEmpty() {
+        return deckOfCards.isEmpty()
+    }
 }
