@@ -155,6 +155,6 @@ public class Deck {
     }
 
     public boolean isEmpty() {
-        return deckOfCards.isEmpty()
+        return deckOfCards.isEmpty();
     }
 }
