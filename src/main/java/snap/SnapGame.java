@@ -1,70 +1,77 @@
-//package snap;
-//
-//import card.Card;
-//import deck.Deck;
-//
-//import java.util.Random;
-//import java.util.Scanner;
-//
-//public class SnapGame {
-//    private Deck currentPile;
-//    private Deck snapPile;
-//    private Card previousCard;
-//    private int snapCount;
-//
-//    public SnapGame() {
-//        currentPile = new Deck();
-//        snapPile = new Deck();
-//        snapCount = 0;
-//    }
-//    public void play() {
-//        Scanner scanner = new Scanner(System.in);
-//        Random random = new Random();
-//
-//        while (true) {
-//            // Deal one card from the current pile randomly
-//            Card currentCard = currentPile.dealCard(random.nextInt(currentPile.size()));
-//            // Deal one card from the snap pile randomly
-//            Card snapCard = snapPile.dealCard(random.nextInt(snapPile.size()));
-//
-//            // Ensure snap card and current card are different
-//            while (snapCard.equals(currentCard)) {
-//                snapCard = snapPile.dealCard(random.nextInt(snapPile.size()));
-//            }
-//
-//            // Display the initial cards
-//            System.out.println("Current card: " + currentCard);
-//            System.out.println("Snap card: " + snapCard);
-//
-//            if (currentCard == null || snapCard == null) {
-//                break;
-//            }
-//
-//            if (previousCard != null && (previousCard.getSuit().equals(currentCard.getSuit()) ||
-//                    previousCard.getSymbol().equals(currentCard.getSymbol()))) {
-//                System.out.print("Enter 'snap': ");
-//                String input = scanner.nextLine().trim();
-//                if (input.equalsIgnoreCase("snap")) {
-//                    if (snapCard.getSuit().equals(previousCard.getSuit()) || snapCard.getSymbol().equals(previousCard.getSymbol())) {
-//                        snapCount++;
-//                        System.out.println("Snap! Total snaps: " + snapCount);
-//                    } else {
-//                        System.out.println("Incorrect snap. Keep playing.");
-//                    }
-//                } else {
-//                    System.out.println("Keep playing.");
-//                }
-//            }
-//
-//            // Deal the next cards for comparison
-//            previousCard = currentCard;
-//        }
-//
+package snap;
+
+import card.Card;
+import deck.Deck;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SnapGame {
+    private Deck deck;
+    private List<Card> previousCards;
+    private int snapCount;
+
+    public SnapGame() {
+        deck = new Deck();
+        deck.shuffleDeck();
+        previousCards = new ArrayList<>();
+        snapCount = 0;
+    }
+
+    public void play() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to Snap!");
+        System.out.println("Press ENTER to flip a card. Press SPACE to call Snap!");
+
+        while (!deck.isEmpty()) {
+            while (System.in.read() != '\n') {
+            }
+
+            Card currentCard = deck.dealCard();
+            if (currentCard == null) {
+                break;
+            }
+
+            System.out.println("You flipped: " + currentCard);
+
+            boolean isSnap = false;
+            for (Card previousCard : previousCards) {
+                if (previousCard.getSuit().equals(currentCard.getSuit()) ||
+                        previousCard.getSymbol().equals(currentCard.getSymbol())) {
+                    isSnap = true;
+                    break;
+                }
+            }
+
+            if (isSnap) {
+                long startTime = System.currentTimeMillis();
+                boolean snapped = false;
+                while (System.currentTimeMillis() - startTime < 2000) {
+                    if (System.in.available() > 0) {
+                        char snapInput = (char) System.in.read();
+                        if (snapInput == ' ') {
+                            snapCount++;
+                            System.out.println("Snap! Total snaps: " + snapCount);
+                            snapped = true;
+                            break;
+                        }
+                    }
+                }
+                if (!snapped) {
+                    System.out.println("Missed Snap. Keep playing.");
+                }
+            }
+            previousCards.add(currentCard);
+        }
 //        scanner.close();
-//    }
-//
-//    public static void main(String[] args) {
-//        SnapGame game = new SnapGame();
-//        game.play();
-//    }
-//}
+        System.out.println("No more cards left in the deck. Game over!");
+        System.out.println("Total snaps: " + snapCount);
+    }
+    public static void main(String[] args) throws IOException {
+        SnapGame game = new SnapGame();
+        game.play();
+    }
+}

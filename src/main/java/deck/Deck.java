@@ -83,8 +83,14 @@ public class Deck {
         }
     }
 
+//    method for deck of cards size
     public int size() {
         return deckOfCards.size();
+    }
+
+// method for empty deck of cards
+    public boolean isEmpty() {
+        return deckOfCards.isEmpty();
     }
 
     //    Main method for testing
