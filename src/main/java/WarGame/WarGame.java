@@ -3,7 +3,6 @@ package WarGame;
 import card.Card;
 import deck.Deck;
 import WarGame.Player.Player;
-
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -62,7 +61,7 @@ public class WarGame {
                 // War condition
                 System.out.println("War!");
                 if (player.hasCards() && computer.hasCards()) {
-                    // Each player puts three cards face down and one card face up
+                    // The game picks random cards for both players
                     Card[] warCardsPlayer = drawWarCards(player);
                     Card[] warCardsComputer = drawWarCards(computer);
 
@@ -94,7 +93,7 @@ public class WarGame {
                         computer.incrementScore(); // Increment computer's score for war round
                         System.out.println(computer.getName() + " wins the war round.");
                     } else {
-                        // If another tie occurs, continue the war
+                        // If another tie occurs,the game will continue
                         for (Card card : warCardsPlayer) {
                             player.addCardToHand(card);
                         }
