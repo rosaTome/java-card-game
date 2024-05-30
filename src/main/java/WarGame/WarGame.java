@@ -137,12 +137,6 @@ public class WarGame {
 
 
 
-
-
-
-
-
-
     private Card[] drawWarCards(Player player) {
         Card[] cards = new Card[4];
         for (int i = 0; i < 4; i++) {
@@ -154,6 +148,8 @@ public class WarGame {
         }
         return cards;
     }
+
+
 
     private void declareWinner() {
         if (player.hasCards() && !computer.hasCards()) {
@@ -177,6 +173,7 @@ public class WarGame {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to WarGame!");
         System.out.println("Enter your name:");
         String playerName = scanner.nextLine();
 
