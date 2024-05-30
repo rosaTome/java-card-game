@@ -9,6 +9,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SnapGame {
+
+    private String userName;
+
+    public SnapGame(String userName) {
+        this.userName = userName;
+    }
+
+    public void startGame() {
+        System.out.println("Starting Snap Game for user " + userName);
+        // Add game logic here
+    }
+
     private Deck deck;
     private List<Card> previousCards;
     private int snapCount;

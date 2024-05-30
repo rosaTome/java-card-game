@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WarGame {
+
     private final Player player;
     private final Player computer;
     private final Deck deck;
