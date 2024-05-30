@@ -87,6 +87,16 @@ public class Deck {
         return deckOfCards;
     }
 
+//    method for deck of cards size
+    public int size() {
+        return deckOfCards.size();
+    }
+
+// method for empty deck of cards
+    public boolean isEmpty() {
+        return deckOfCards.isEmpty();
+    }
+
     //    Main method for testing
     public static void main (String[] args) {
 //        Create a new deck
@@ -157,8 +167,6 @@ public class Deck {
         System.out.println("Printed deck of cards:");
         deck.printDeck();
     }
-
-
 
 
 
